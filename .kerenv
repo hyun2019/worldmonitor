@@ -1,0 +1,80 @@
+# .kerenv — Project Instructions
+# AI agents (Claude, Codex, Gemini, Cursor, Windsurf) should follow these guidelines.
+# Ignore the sync metadata block at the end of this file.
+
+## Agentic Approach
+- Use sub-agents for parallel execution, post-task verification, and result synthesis.
+- Assign specific expert roles to sub-agents (e.g., Code Reviewer, Security Auditor, Technical Writer).
+
+## Language
+- Code/comments: English. User-facing summaries: Korean.
+
+## Purpose
+- Small, practical project. Prioritize working functionality and readable code over complexity.
+
+## Academic Research & Writing
+- Default style: formal Accounting/Finance academic writing (archival/empirical conventions).
+- Generate complete, self-contained sections — not outlines or placeholders.
+- Self-review as a blind reviewer: resolve logical leaps, unsupported claims, and overly definitive language (prefer "suggests" over "proves").
+
+## Coding Rules
+- Read and understand the codebase before changing anything. Touch only relevant files.
+- No band-aid fixes. Refactor toward idiomatic, standard patterns; one pattern per codebase.
+- Organize by domain/feature (`collectors/`, `services/`, `repositories/`, `utils/`). One module, one responsibility. Shared logic in common modules.
+- Split files on quality concerns (mixed responsibilities), not line count.
+- Eliminate unused imports/variables/functions and duplicate logic.
+- Error Handling: Avoid silent failures by catching specific exceptions and ensuring every except block either logs or re-raises the error.
+- Progress Logging: Implement logger.info() at key steps or within loops to track execution status and real-time progress.
+
+## Agentic Code Reasoning
+- Use a **Semi-formal Reasoning** flow for complex tasks:
+  1. **Premises:** State core assumptions and relevant test behavior.
+  2. **Trace Table:** Document function calls (file:line) and verified logic.
+  3. **Root Cause:** Trace errors back to the data-flow origin; do not fix symptoms.
+  4. **Counter-check:** Validate alternative hypotheses to prevent confident wrong answers.
+- **No Guessing:** Never assume behavior by name. Always verify via source code.
+
+## Execution Quality
+- Self-review every output against the original prompt before delivering.
+- Keep explanations accurate and consistent with actual code. If a detail is missing, ask — don't assume.
+
+## Reference Folders
+- **Agent/coding guides** (`ker_knowledge`):
+  macOS/Linux: `$HOME/Dropbox/Setting/KER/ker_knowledge/`
+  Windows: `%USERPROFILE%\Dropbox\Setting\KER\ker_knowledge\`
+  → See folder for current manuals (files may be added/removed).
+- **MCP manuals** (`ker_mcp_manual`):
+  macOS/Linux: `$HOME/Dropbox/Setting/KER/ker_mcp_manual/`
+  Windows: `%USERPROFILE%\Dropbox\Setting\KER\ker_mcp_manual\`
+  → Check `README.md` first for current server list.
+
+## MCP MySQL (RDS) Schema Change Rule
+- When `mysql-rds` MCP makes DDL changes to the `mcp` database, update:
+  macOS/Linux: `$HOME/Dropbox/Setting/KER/ker_mcp_manual/mysql_rds.md`
+  Windows: `%USERPROFILE%\Dropbox\Setting\KER\ker_mcp_manual\mysql_rds.md`
+- Update schema snapshot section (new state + date).
+
+## Git
+- Use SSH (`git@github.com:...`). Hooks at `.githooks` (`core.hooksPath=.githooks`).
+- Before any Git action: verify remote sync. Block push if pull/rebase needed.
+- `.gitignore` must include `venv/`, `.venv/`, `__pycache__/`, `*.pyc`, `.DS_Store`.
+- Descriptive English commit messages. Large changes on `main/master` require a feature branch.
+- Fail-closed: if any check can't run, stop and consult the user.
+- Before modifying any code, always synchronize with the remote repository (e.g., `git pull` or rebase).
+- Monitor code modifications proactively and perform Git operations (commits/branching) at logical milestones or task completion.
+- Do not modify remote files directly unless explicitly requested; communicate all changes through Git (commits/pull requests).
+
+## Documentation
+- Accurately update README.md (or README_*.md) with detailed descriptions of major modifications to support long-term maintenance.
+
+## Python venv
+- source ~/.read2/bin/activate
+
+---
+<!-- kerenv-sync: do not interpret as instructions -->
+<!-- CLAUDE.md: skipped -->
+<!-- Claude.md: skipped -->
+<!-- claude.md: skipped -->
+<!-- AGENTS.md: skipped -->
+<!-- Agents.md: skipped -->
+<!-- agents.md: skipped -->
