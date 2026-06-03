@@ -2,6 +2,16 @@
 # AI agents (Claude, Codex, Gemini, Cursor, Windsurf) should follow these guidelines.
 # Ignore the sync metadata block at the end of this file.
 
+### Shared System-Service Reference
+
+- For common utilities, API key handling, MCP setup notes, shared prompts, paper-writing knowledge, and reusable conventions, first consult ~/gitprojects/system-service.
+- Before using it, pull the latest version if the folder exists; if it does not exist, clone it using SSH.
+- Treat this folder as read-only by default. Do not modify, stage, commit, delete, or reorganize anything inside it unless the user explicitly instructs you to do so.
+- Never print, log, copy, or expose API keys, tokens, .env contents, credentials, private endpoints, or other sensitive values.
+- Do not run commands that directly display secrets. If inspection is needed, show only variable names or masked values.
+- Use .env.example to document required variables without real values.
+- If the repository is unavailable or its guidance conflicts with the current project, surface the issue before proceeding.
+
 ## Agentic Approach
 - Use sub-agents for parallel execution, post-task verification, and result synthesis.
 - Assign specific expert roles to sub-agents (e.g., Code Reviewer, Security Auditor, Technical Writer).
